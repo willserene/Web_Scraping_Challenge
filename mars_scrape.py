@@ -1,7 +1,7 @@
 # Import Splinter, BeautifulSoup, and Pandas
-import datetime as dt
 import os
 import pandas as pd
+import datetime as dt
 
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
@@ -15,19 +15,18 @@ def scrape_all():
     news_title, news_p = mars_news(browser)
 
     # Run all scraping functions and store results in a dictionary
-    mars_data = {
+    data = {
         "News Title": news_title,
         "News Paragraph" : news_p,
         "Featured Image": featured_image(browser),
         "Mars Facts": mars_facts(),
-        "Hemispheres": hemispheres(browser),
+        # "Hemispheres": hemispheres(browser),
         "last_modified": dt.datetime.now()
         }
         
     browser.quit()
 
-    return mars_data
-
+    return data
 
 def mars_news(browser):
     # browser = start_browser()
@@ -55,8 +54,7 @@ def mars_news(browser):
     # Visit the mars nasa news site
     
     return news_title, news_p
-
-   
+ 
 def featured_image(browser):
      # browser = start_browser()
     img_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
@@ -77,23 +75,19 @@ def featured_image(browser):
 
     return mars_image_url
 
+def mars_facts():
+    facts_url = 'https://space-facts.com/mars/'
 
-
-# def mars_facts():
-#     # Add try/except for error handling
-#     try:
-#         # use 'read_html' to scrape the facts table into a dataframe
-#         df = pd.read_html('http://space-facts.com/mars/')[0]
-
-#     except BaseException:
-#         return None
-
-#     # assign columns and set index of dataframe
-#     df.columns = ['Description', 'Mars']
-#     df.set_index('Description', inplace=True)
-
-#     # Convert dataframe into HTML format, add bootstrap
-#     return df.to_html(classes="table table-striped")
+    table = pd.read_html(facts_url)
+    facts_table = pd.DataFrame(table[0])
+    facts_table.columns = ['Description', 'Mars']                  
+    facts_table.set_index('Description', inplace = True)
+    
+    
+    # cleaning table
+    # facts_table.replace('\n', '')
+    
+    return facts_table.to_html(classes = "table table-striped")
 
 
 # def hemispheres(browser):
