@@ -2,31 +2,34 @@
 import os
 import pandas as pd
 import datetime as dt
-
 from splinter import Browser
 from bs4 import BeautifulSoup as bs
 from webdriver_manager.chrome import ChromeDriverManager
 
-def scrape_all():
+def scrape():
     # Initiate headless driver for deployment
     # executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
     browser = Browser("chrome", executable_path="chromedriver", headless=True)
 
     news_title, news_p = mars_news(browser)
+    featured_image_url = featured_image(browser)
+    mars_facts_html = mars_facts()
 
     # Run all scraping functions and store results in a dictionary
     data = {
         "News Title": news_title,
-        "News Paragraph" : news_p,
-        "Featured Image": featured_image(browser),
-        "Mars Facts": mars_facts(),
-        # "Hemispheres": hemispheres(browser),
+        "News Paragraph": news_p,
+        "Featured Image": featured_image_url,
+        "Mars Facts": mars_facts_html,
+        # "Hemispheres": hemispheres,
         "last_modified": dt.datetime.now()
         }
         
     browser.quit()
 
-    return data
+    return (data)
+
+   
 
 def mars_news(browser):
     # browser = start_browser()
@@ -71,9 +74,9 @@ def featured_image(browser):
 
     mars_image = img_soup.find('img', class_ = "headerimage")['src']
 
-    mars_image_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space' + '/' + mars_image
+    featured_image_url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space' + '/' + mars_image
 
-    return mars_image_url
+    return featured_image_url
 
 def mars_facts():
     facts_url = 'https://space-facts.com/mars/'
@@ -83,11 +86,11 @@ def mars_facts():
     facts_table.columns = ['Description', 'Mars']                  
     facts_table.set_index('Description', inplace = True)
     
-    
+    facts_table_html = facts_table.to_html(classes = "table table-striped")
     # cleaning table
     # facts_table.replace('\n', '')
     
-    return facts_table.to_html(classes = "table table-striped")
+    return facts_table_html
 
 
 # def hemispheres(browser):
@@ -135,7 +138,8 @@ def mars_facts():
 #     return hemispheres
 
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
     # If running as script, print scraped data
-    print(scrape_all())
+    
+    
