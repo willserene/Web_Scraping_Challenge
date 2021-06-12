@@ -49,12 +49,12 @@
           <!-- Mars Facts -->
           <div class="row" id="mars-facts">
             <h4>Mars Facts</h4>
-            {{ mars_data["Mars Facts"] | safe }}
+            {{ mars_data["Mars Facts"] | safe}}
           </div>
         </div>
       </div>
 
-      <!-- Section for Mars Hemispheres
+      <!-- Section for Mars Hemispheres -->
       <div class="row" id="mars-hemispheres">
         <div class="page-header">
           <h2 class="text-center">Mars Hemispheres</h2>
@@ -63,13 +63,14 @@
         {% for hemisphere in mars_data.Hemispheres %}
         <div class="col-md-3">
           <div class="thumbnail">
-            <img src="{{hemisphere.img_url | default('static/images/error.png', true)}}" alt="...">
+            <img src="{{mars_data['Image 1'] | default('static/images/error.png', true) }}">
+            <!-- <img src="{{mars_data['Image 1'] | default('static/images/error.png', true)}}" alt="..."> -->
             <div class="caption">
-              <h3>{{hemisphere.title}}</h3>
+              <h3>{{ hemisphere.Hemisphere 1 }}</h3>
             </div>
           </div>
         </div>
-        {% endfor %} -->
+        {% endfor %}
       </div>
     </div>
   </body>

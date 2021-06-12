@@ -123,12 +123,12 @@ def hemispheres(browser):
     hemisphere_image4 = soup.find('img', class_ = 'wide-image')['src']
     hemisphere_image4_url = f'{mars_hemispheres_url}{hemisphere_image4}'
 
-    hemisphere_image_urls = [
-        {"title1": hemisphere_title1, "img1_url": hemisphere_image1_url},
-        {"title2": hemisphere_title2, "img2_url": hemisphere_image2_url},
-        {"title3": hemisphere_title3, "img3_url": hemisphere_image3_url},
-        {"title4": hemisphere_title4, "img4_url": hemisphere_image4_url},
-    ]
+    hemisphere_image_urls = {
+        "Hemisphere1": hemisphere_title1, "Image1": hemisphere_image1_url,
+        "Hemisphere2": hemisphere_title2, "Image2": hemisphere_image2_url,
+        "Hemisphere3": hemisphere_title3, "Image3": hemisphere_image3_url,
+        "Hemisphere4": hemisphere_title4, "Image4": hemisphere_image4_url}
+    
 
     return hemisphere_image_urls
 
