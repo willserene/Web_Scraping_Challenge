@@ -25,8 +25,10 @@ def index():
 def scraper():
     # mars = mongo.db.mars
     
-    mars_data = mongo.db.data
-    scrape_data = mars_scrape.scrape()    
+    
+    scrape_data = mars_scrape.scrape()
+
+    mars_data = mongo.db.data    
 
     # update the Mongo database
     mars_data.update({}, scrape_data, upsert=True)
