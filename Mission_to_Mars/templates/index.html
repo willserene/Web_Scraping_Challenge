@@ -59,9 +59,8 @@
         <div class="page-header">
           <h2 class="text-center">Mars Hemispheres</h2>
         </div>
-
-        <!-- {% for hemisphere in mars_data.hemispheres %} -->
-        <div class="col-md-3">
+        {% for hemisphere in mars_data.hemispheres %}
+          <div class="col-md-3">
           <div class="thumbnail">
             <img src="{{hemisphere.url1 | default('static/images/error.png', true) }}">
             <!-- <img src="{{mars_data['Image 1'] | default('static/images/error.png', true)}}" alt="..."> -->
@@ -94,7 +93,7 @@
             </div>
           </div>
         </div>
-        <!-- {% endfor %} -->
+        {% endfor %}
       </div>
     </div>
   </body>
