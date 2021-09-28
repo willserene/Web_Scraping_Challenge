@@ -17,8 +17,10 @@ The second major step utilized MongoDB with Flask templating to create the HTML 
 
 ## Screenshots from Deployed Web Application
 
+Image 1
 ![Image 1](https://github.com/willserene/Web_Scraping_Challenge/blob/main/Screenshots/Image%201.png)
 
+Image 2
 ![Image 2](https://github.com/willserene/Web_Scraping_Challenge/blob/main/Screenshots/Image%202.png)
 
 
