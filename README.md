@@ -16,3 +16,7 @@ The second major step utilized MongoDB with Flask templating to create the HTML 
       - This was accomplished via a route ("/scrape") that imports the script and calls the appropriate function, as well as a route ("/") that queries the Mongo database and passes the mars data into an HTML template to display the data.
 
 ## Screenshots from Deployed Web Application
+
+https://github.com/willserene/Web_Scraping_Challenge/blob/main/Screenshots/Image%201.png
+
+https://github.com/willserene/Web_Scraping_Challenge/blob/main/Screenshots/Image%202.png
