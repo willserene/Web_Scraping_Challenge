@@ -14,3 +14,5 @@ The second major step utilized MongoDB with Flask templating to create the HTML 
    - The jupyter notebook was converted into a Python script called mars_scrape.py. 
       - Running this file scrapes the above info and returns it all in a single dictionary. 
       - This was accomplished via a route ("/scrape") that imports the script and calls the appropriate function, as well as a route ("/") that queries the Mongo database and passes the mars data into an HTML template to display the data.
+
+## Screenshots from Deployed Web Application
